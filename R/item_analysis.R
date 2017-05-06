@@ -42,7 +42,7 @@ point_biserial_internal <- function(x) {
       score_excluded <- rowMeans(item_responses[, -i, drop = FALSE], na.rm = TRUE)
       response_col <- item_responses[, i]
       
-      if (all(c(0, 1, NA) %in% response_col)) {
+      if (all(c(0, 1) %in% response_col)) {
         c(biserial.cor(score_included, response_col, use = "complete.obs", level = 2),
           biserial.cor(score_excluded, response_col, use = "complete.obs", level = 2))  
       } else {
