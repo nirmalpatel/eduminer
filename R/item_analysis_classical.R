@@ -5,7 +5,11 @@
 #' @export
 point_biserial <- function(x) {
   
-  stopifnot(x %hascols% c("testid", "userid", "itemid", "response"))
+  xcols <- c("testid", "userid", "itemid", "response")
+  
+  stopifnot(x %hascols% xcols)
+  
+  x <- x %keepcols% xcols
   
   out <- map(split(x, x[["testid"]]), function(test_data) {
     
@@ -27,10 +31,13 @@ point_biserial <- function(x) {
 #' @importFrom magrittr %>%
 point_biserial_internal <- function(x) {
 
-  stopifnot(x %hascols% c("userid", "itemid", "response"))
+  xcols <- c("userid", "itemid", "response")
+  
+  stopifnot(x %hascols% xcols)
+  
+  x <- x %keepcols% xcols
   
   item_responses <- response_matrix(x) %>%
-    select_(~ -userid) %>%
     as.matrix()
 
   itemids <- colnames(item_responses)
@@ -67,7 +74,12 @@ point_biserial_internal <- function(x) {
 #'
 #' @export
 cronbach_alpha <- function(x) {
-  stopifnot(x %hascols% c("testid", "userid", "itemid", "response"))
+  
+  xcols <- c("testid", "userid", "itemid", "response")
+  
+  stopifnot(x %hascols% xcols)
+  
+  x <- x %keepcols% xcols
   
   out <- map(split(x, x[["testid"]]), function(test_data) {
     
@@ -89,10 +101,13 @@ cronbach_alpha <- function(x) {
 #' @importFrom magrittr %>%
 cronbach_alpha_internal <- function(x) {
 
-  stopifnot(x %hascols% c("userid", "itemid", "response"))
+  xcols <- c("userid", "itemid", "response")
+  
+  stopifnot(x %hascols% xcols)
+  
+  x <- x %keepcols% xcols
 
   item_responses <- response_matrix(x) %>%
-    select_(~ -userid) %>%
     as.matrix()
 
   itemids <- colnames(item_responses)
@@ -131,7 +146,11 @@ cronbach_alpha_internal <- function(x) {
 #' @export
 item_descript <- function(x) {
 
-  stopifnot(x %hascols% c("testid", "userid", "itemid", "response"))
+  xcols <- c("testid", "userid", "itemid", "response")
+  
+  stopifnot(x %hascols% xcols)
+  
+  x <- x %keepcols% xcols
 
   x %>%
     group_by_(~ testid, ~ itemid) %>%

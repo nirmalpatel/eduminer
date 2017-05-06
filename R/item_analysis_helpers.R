@@ -144,11 +144,18 @@ filter_test_users <- function(x, pct_items_bw, verbose = TRUE) {
 #' @importFrom magrittr %>%
 #'
 #' @export
-response_matrix <- function(x) {
+response_matrix <- function(x, keep_userid = FALSE) {
   
   stopifnot(x %hascols% c("userid", "itemid", "response"))
   
-  x %>%
+  out <- x %>%
     select_(~ userid, ~ itemid, ~ response) %>%
     spread_("itemid", "response")
+  
+  if (keep_userid == TRUE) {
+    out
+  } else {
+    out %>%
+      select_(~ -userid)
+  }
 }

@@ -13,5 +13,6 @@ RoxygenNote: 6.0.1.9000
 Imports: dplyr,
   ltm,
   magrittr,
+  mirt,
   tibble,
   tidyr
