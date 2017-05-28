@@ -30,3 +30,11 @@ prop_value <- function(x, val, na.rm = TRUE) {
 
   sum(x == val) / length(x)
 }
+
+# going to encode events with integers
+#' @export
+intify <- function(x) {
+  y <- sort(unique(x))
+  z <- setNames(1:length(y), y)
+  z[x]
+}

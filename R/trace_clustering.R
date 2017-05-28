@@ -18,13 +18,6 @@ trace_distmatrix <- function(x, ...) {
   
   stopifnot(x %hascols% c("caseid", "activity", "completeTime"))
   
-  # going to encode events with integers
-  intify <- function(x) {
-    y <- sort(unique(x))
-    z <- setNames(1:length(y), y)
-    z[x]
-  }
-  
   x[["activityid"]] <- intify(x[["activity"]])
   
   # encoded trace list
