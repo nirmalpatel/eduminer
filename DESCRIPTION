@@ -4,7 +4,7 @@ Title: Educational Data Mining in R
 Version: 0.1.0
 Depends: R (>= 3.1.0)
 Author: Nirmal Patel
-Maintainer: Nirmal Patel <message.nirmal@gmail.com>
+Maintainer: Nirmal Patel
 Description: This package contains utilities commonly used when doing educational data mining tasks.
 License: GPL
 Encoding: UTF-8
